@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 
 app.get('/giphy/:id', function (req, res){
     var options ={
-        url: 'http://api.giphy.com/v1/gifs/search?q=' + req.params + '&api_key='+ process.env.GIPHY_API_KEY +'&limit=5'
+        url: 'http://api.giphy.com/v1/gifs/search?q=' + req.params + '&api_key='+ process.env.GIPHY_API_KEY + '&limit=5'
     }
 
     request(options, function (error, response, body) {

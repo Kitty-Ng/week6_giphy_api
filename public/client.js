@@ -11,7 +11,7 @@ myApp.controller ('ImageController', function($http){
             method: "GET",
             url: '/giphy/' + vm.searchIn,  
         }).then(function(res){
-            vm.gifContainer.data = res.data;
+            vm.gifContainer.data = res.data.data;
         })
     }
 

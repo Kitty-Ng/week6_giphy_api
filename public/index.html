@@ -6,13 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vendors/angular.min.js"></script>
     <script src="client.js"></script>
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <title>Shara and Kitty</title>
 </head>
-<body ng-app = "myApp" ng-controller="ImageController as IC">
-    <h1> hi there! </h1>
-    <p> search for your gifs </p>
-    <input type="text" id="searchIn" placeholder="search Giphy" ng-model="IC.searchIn"></input>
-    <button id="searchButton" ng-click="IC.searchGiphy()">Search</button>
-    <span ng-repeat="vid in IC.gifContainer.data">{{vid}}</span>
+<body ng-app = "myApp" class="container">
+    <main ng-controller="ImageController as IC" >
+        <h1> Hi there! </h1>
+        <p> search for your gifs </p>
+        <input class="form-control" type="text" id="searchIn" placeholder="search Giphy" ng-model="IC.searchIn"></input>
+        <br>
+        <button class="btn btn-primary btn-lg" id="searchButton" ng-click="IC.searchGiphy()">Search</button>
+        <li ng-repeat="vid in IC.gifContainer.data">
+            <!-- <iframe ng-src="{{vid.embed_url}}" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="{{vid.url}}">via GIPHY</a></p> -->
+            <a ng-href="{{vid.url}}">{{vid.url}}</a>
+        </li>
+    </main>
 </body>
 </html>
