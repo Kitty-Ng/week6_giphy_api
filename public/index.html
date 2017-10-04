@@ -11,8 +11,8 @@
 <body ng-app = "myApp" ng-controller="ImageController as IC">
     <h1> hi there! </h1>
     <p> search for your gifs </p>
-    <input type="text" id="searchIn" placeholder="search Giphy"></input>
-    <button id="searchButton">Search</button>
-    <li ng-repeat="vids in IC.funny.gifs">{{vids.url}}</li>
+    <input type="text" id="searchIn" placeholder="search Giphy" ng-model="IC.searchIn"></input>
+    <button id="searchButton" ng-click="IC.searchGiphy()">Search</button>
+    <span ng-repeat="vid in IC.gifContainer.data">{{vid}}</span>
 </body>
 </html>

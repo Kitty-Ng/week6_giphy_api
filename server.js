@@ -1,20 +1,26 @@
 var express = require ('express');
 var app = express();
 var request = require('request');
-require ('dotenv').config();
 var port = 3000;
+var path = require('path');
+var bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
 app.use(express.static('public'));
+
+require ('dotenv').config();
 
 app.listen(port, function (req, res){
     console.log ('working on port 3000', port);
 })
 
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
-app.get('/giphy', function (req, res){
+app.get('/giphy/:id', function (req, res){
     var options ={
-        url: 'http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key='+process.env.GIPHY_API_KEY+'&limit=5',
-        method: 'GET'
+        url: 'http://api.giphy.com/v1/gifs/search?q=' + req.params + '&api_key='+ process.env.GIPHY_API_KEY +'&limit=5'
     }
 
     request(options, function (error, response, body) {
